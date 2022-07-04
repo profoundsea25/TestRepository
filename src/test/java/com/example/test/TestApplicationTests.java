@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 
-@SpringBootTest
 class TestApplicationTests {
 
     @Test
@@ -32,9 +31,6 @@ class TestApplicationTests {
 
     @Test
     void test1() {
-        List<Number> numberList1 = Arrays.asList(Number.One, Number.Two);
-        numberList1.stream().map(n -> n.getNumber()).forEach(System.out::println);
-
         System.out.println(((Function<Number, String>) n -> n.getNumber()).getClass());
 
         List<Number> numberList = Arrays.asList(Number.One, Number.Two, null);
