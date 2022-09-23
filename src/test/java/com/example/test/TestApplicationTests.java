@@ -1,13 +1,19 @@
 package com.example.test;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 
+@Slf4j
 class TestApplicationTests {
 
     @Test
@@ -48,6 +54,41 @@ class TestApplicationTests {
 
         public String getNumber() {
             return number;
+        }
+    }
+
+    @Test
+    void null_check() {
+        testVo testVo = null;
+        String trackingId = testVo.getTrackingId();
+
+        if (null == testVo.getTrackingId()) {
+            log.info("YES");
+        } else {
+            log.info("No");
+        }
+    }
+
+    @Data
+    @NoArgsConstructor
+    static class testVo {
+        private String trackingId;
+        private String anything;
+
+        public String getTrackingId() {
+            return trackingId;
+        }
+
+        public void setTrackingId(String trackingId) {
+            this.trackingId = trackingId;
+        }
+
+        public String getAnything() {
+            return anything;
+        }
+
+        public void setAnything(String anything) {
+            this.anything = anything;
         }
     }
 
